@@ -20,20 +20,39 @@ export default function Home() {
         {
             topic: "Physics",
             link: baselink + "Physics",
+            available: true,
         },
         {
             topic: "Mathematics",
-            link: baselink + "Mathematics"
+            link: baselink + "Mathematics",
+            available: false,
         },
         {
             topic: "Computer Science",
-            link: baselink + "ComputerScience"
+            link: baselink + "ComputerScience",
+            available: false,
         },
     ]
 
     function routeToTopic(event) {
         const value = event.target.href
         window.location = value
+    }
+
+    function AvailableButton(props) {
+        if (props.button.available) {
+            return (
+                <Button variant="contained" color="primary" href={props.button.link} onClick={routeToTopic}>
+                    {props.button.topic}
+                </Button>
+            )
+        }
+
+        return (
+            <Button variant="contained" color="primary" href={props.button.link} onClick={routeToTopic} disabled>
+                {props.button.topic}
+            </Button>
+        )
     }
 
     return (
@@ -50,9 +69,7 @@ export default function Home() {
                     <Grid container spacing={2} justify="center">
                         {buttons.map((button) => (
                             <Grid item>
-                                <Button variant="contained" color="primary" href={button.link} onClick={routeToTopic}>
-                                    {button.topic}
-                                </Button>
+                                <AvailableButton button={button} />
                             </Grid>
                         ))}
                     </Grid>

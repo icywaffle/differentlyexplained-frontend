@@ -43,11 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Home() {
-    const [topic, setTopic] = useState("Dummy Classical")
-    const [body, setBody] = useState(["Dummy Paragraph 1", "Dummy Paragraph 2"])
-
     const baselink = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/"
-
 
     const cards = [
         {
